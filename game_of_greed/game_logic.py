@@ -63,5 +63,13 @@ class GameLogic:
         for i in count:
             score += rules[i]
         return score
+        
+    @staticmethod
+    def roll_dice(rounds:int):
+        randResult=[]
+        for i in range(rounds):
+            rand=random.randint(1,6)
+            randResult.append(rand)
+        return randResult
 
     
