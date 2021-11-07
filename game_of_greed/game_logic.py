@@ -49,6 +49,16 @@ class GameLogic:
         count=collections.Counter(tuple).most_common()
         sort= sorted(tuple)
 
+        #unique combination
+        if [1,2,3,4,5,6] == sort:
+            score=1500
+            return score
+
+        #three pairs
+        if len(count) == 3 and count[0][1] == 2 and count[1][1] == 2 and count[2][1] == 2:
+            score=1500
+            return score
+            
         print(count)
         for i in count:
             score += rules[i]
