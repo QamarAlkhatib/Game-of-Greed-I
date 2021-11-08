@@ -93,13 +93,14 @@ class Game():
                     # banked = banked
                     # elif bank == 'r':
                     #     print('Rolling 6 dice...')
-                    #     roll_dice = self.roller(6)
-                    #     nums=[]
-                    #     for i in roll_dice:
-                    #         nums.append(str(i))
-                    #     print(','.join(nums))
+                    # roll_dice = self.roller(6)
                         
-                    #     decide = input('Enter dice to keep (no spaces), or (q)uit: ')
+                        # nums=[]
+                        # for i in roll_dice:
+                        #     nums.append(str(i))
+                        # print(','.join(nums))
+                        
+                        # decide = input('Enter dice to keep (no spaces), or (q)uit: ')
                         
                         banked = banked
 
