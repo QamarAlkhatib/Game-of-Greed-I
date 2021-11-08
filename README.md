@@ -18,3 +18,19 @@ https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/3
 
 # eslam akram
 https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/4
+
+
+# lab 7 (Game of creed part 2)
+
+
+## Abdallah alabed part:
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/6
+
+## Qamar Alkhatib
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/5
+
+## Yousef alramli
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/7
+
+## belal ellolahi , eslam akram
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/8
