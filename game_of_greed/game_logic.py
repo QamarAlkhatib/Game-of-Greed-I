@@ -59,7 +59,7 @@ class GameLogic:
             score=1500
             return score
             
-        print(count)
+        # print(count)
         for i in count:
             score += rules[i]
         return score
