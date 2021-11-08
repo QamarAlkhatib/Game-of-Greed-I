@@ -88,7 +88,8 @@ class Game():
                         print(f'Total score is {banked} points')
                         print(f'Thanks for playing. You earned {banked} points')
                         break
-                    
+                    elif bank == 'r':
+                        continue
 
                     # banked = banked
                     # elif bank == 'r':
