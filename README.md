@@ -44,3 +44,9 @@ so we only did 2 pull requests!
 
 https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/12
 https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/13
+
+# lab 7 (Game of creed part 3)
+we worked as a team today !
+we shared the screen and all 5 of us started solving the code 
+so we only did 1 pull request!
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/14
