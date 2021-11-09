@@ -1,6 +1,7 @@
 from game_of_greed.game_logic import GameLogic
 from game_of_greed.banker import Banker
 
+
 rules={
     (1,1):100,
     (5,1):50,
@@ -41,9 +42,7 @@ rules={
 }      
 class Game():
     def __init__(self,roller=None):
-        # super.__init__(self.shelved,self.balance)
         self.roller = roller
-
     def play(self):
         counter = 1
         print('Welcome to Game of Greed')
@@ -51,7 +50,6 @@ class Game():
         if (wanna_play =='n'):
             print('OK. Maybe another time')
         else:
-
             object = Banker()
             banked = 0
             while counter:
@@ -65,21 +63,24 @@ class Game():
                 print(','.join(nums))
                 decide = input('Enter dice to keep (no spaces), or (q)uit: ')
                 score = 0
-
-                # banked = object.bank()
-
-
                 if decide != 'q':
                     var = tuple(int(i) for i in decide) 
                     # print(var)
                     score = GameLogic.calculate_score(var)
                     length = 6 -len(var)
+                    variable= ''.join(sorted(nums))
+                    if  decide not in variable:
+                        print('Cheater!!! Or possibly made a typo...')
+                        print(','.join(nums))
+                        decide = input('Enter dice to keep (no spaces), or (q)uit: ')
+                        var = tuple(int(i) for i in decide) 
+                        score = GameLogic.calculate_score(var)
+                        length = 6 -len(var)
                     print(f'You have {score} unbanked points and {length} dice remaining')
                     bank = input('(r)oll again, (b)ank your points or (q)uit ')
                     if bank == 'b':
                         # object = Banker()
                         shelf = object.shelf(score)
-
                         banked = object.bank()
                         roundBanked = object.bank()
                         print(f'You banked {score} points in round {counter}')
@@ -88,23 +89,6 @@ class Game():
                         print(f'Total score is {banked} points')
                         print(f'Thanks for playing. You earned {banked} points')
                         break
-
-
-                    # banked = banked
-                    # elif bank == 'r':
-                    #     print('Rolling 6 dice...')
-                    # roll_dice = self.roller(6)
-
-                        # nums=[]
-                        # for i in roll_dice:
-                        #     nums.append(str(i))
-                        # print(','.join(nums))
-
-                        # decide = input('Enter dice to keep (no spaces), or (q)uit: ')
-
-                        banked = banked
-
-
                 elif decide == 'q' and counter > 1:
                    print(f'Total score is {banked} points')
                    print(f'Thanks for playing. You earned {banked} points')
