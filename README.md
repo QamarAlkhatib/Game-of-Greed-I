@@ -34,3 +34,13 @@ https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/7
 
 ## belal ellolahi , eslam akram
 https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/8
+
+
+# lab 7 (Game of creed part 3)
+
+we worked as a team today !
+we shared the screen and all 5 of us started solving the code 
+so we only did 2 pull requests!
+
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/12
+https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/13
