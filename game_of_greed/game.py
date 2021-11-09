@@ -1,6 +1,6 @@
 from game_of_greed.game_logic import GameLogic
 from game_of_greed.banker import Banker
-
+import collections
 
 rules={
     (1,1):100,
@@ -42,7 +42,7 @@ rules={
 }      
 class Game():
     def __init__(self,roller=None):
-        self.roller = roller
+        self.roller = roller or GameLogic.roll_dice
     def play(self):
         counter = 1
         print('Welcome to Game of Greed')
@@ -53,7 +53,7 @@ class Game():
             object = Banker()
             banked = 0
             beaking = True
-            while beaking:
+            while beaking and counter <= 10:
                 roundBanked = 0
                 print(f'Starting round {counter}')
                 shelf = 0
@@ -66,6 +66,7 @@ class Game():
                     for i in roll_dice:
                         nums.append(str(i))
                     tuple_nums = tuple(int(i) for i in nums) 
+
                     expected_score = GameLogic.calculate_score(tuple_nums)
                     print(','.join(nums))
                     if expected_score == 0 :
@@ -77,16 +78,24 @@ class Game():
                     score = 0
                     if decide != 'q':
                         var = tuple(int(i) for i in decide) 
-                        # print(var)
+                        int_decide = tuple(int(i) for i in decide)
                         length = 6 -len(var)
                         variable= ''.join(sorted(nums))
-                        if  decide not in variable:
+                        counter_decide = list(int_decide)
+                        counter_nums = list(tuple_nums)
+                        def cheater():
                             print('Cheater!!! Or possibly made a typo...')
                             print(','.join(nums))
                             decide = input('Enter dice to keep (no spaces), or (q)uit: ')
                             var = tuple(int(i) for i in decide) 
                             score = GameLogic.calculate_score(var)
                             length = 6 -len(var)
+                        try:
+                            for i in counter_decide:
+                                counter_nums.remove(i)
+                        except:
+                            raise cheater()
+
                         score = GameLogic.calculate_score(var)
                         shelf = object.shelf(score)
                         roll -=len(var)
@@ -109,6 +118,7 @@ class Game():
                                 return beaking
                             beaking = True
                             return beaking
+                        return True
                     elif decide == 'q' and counter > 1:
                          print(f'Total score is {banked} points')
                          print(f'Thanks for playing. You earned {banked} points')
