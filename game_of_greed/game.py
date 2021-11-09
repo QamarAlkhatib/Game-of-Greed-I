@@ -52,50 +52,73 @@ class Game():
         else:
             object = Banker()
             banked = 0
-            while counter:
+            beaking = True
+            while beaking:
                 roundBanked = 0
                 print(f'Starting round {counter}')
-                print('Rolling 6 dice...')
-                roll_dice = self.roller(6)
-                nums=[]
-                for i in roll_dice:
-                    nums.append(str(i))
-                print(','.join(nums))
-                decide = input('Enter dice to keep (no spaces), or (q)uit: ')
-                score = 0
-                if decide != 'q':
-                    var = tuple(int(i) for i in decide) 
-                    # print(var)
-                    score = GameLogic.calculate_score(var)
-                    length = 6 -len(var)
-                    variable= ''.join(sorted(nums))
-                    if  decide not in variable:
-                        print('Cheater!!! Or possibly made a typo...')
-                        print(','.join(nums))
-                        decide = input('Enter dice to keep (no spaces), or (q)uit: ')
+                shelf = 0
+                roll = 6
+
+                def func(counter,banked, shelf, roll):
+                    print(f'Rolling {roll} dice...')
+                    roll_dice = self.roller(roll)
+                    nums=[]
+                    for i in roll_dice:
+                        nums.append(str(i))
+                    tuple_nums = tuple(int(i) for i in nums) 
+                    expected_score = GameLogic.calculate_score(tuple_nums)
+                    print(','.join(nums))
+                    if expected_score == 0 :
+                        print('Zilch!!! Round over')
+                        print(f'You banked 0 points in round {counter}')
+                        print(f'Total score is {banked} points')
+                        return True
+                    decide = input('Enter dice to keep (no spaces), or (q)uit: ')
+                    score = 0
+                    if decide != 'q':
                         var = tuple(int(i) for i in decide) 
-                        score = GameLogic.calculate_score(var)
+                        # print(var)
                         length = 6 -len(var)
-                    print(f'You have {score} unbanked points and {length} dice remaining')
-                    bank = input('(r)oll again, (b)ank your points or (q)uit ')
-                    if bank == 'b':
-                        # object = Banker()
+                        variable= ''.join(sorted(nums))
+                        if  decide not in variable:
+                            print('Cheater!!! Or possibly made a typo...')
+                            print(','.join(nums))
+                            decide = input('Enter dice to keep (no spaces), or (q)uit: ')
+                            var = tuple(int(i) for i in decide) 
+                            score = GameLogic.calculate_score(var)
+                            length = 6 -len(var)
+                        score = GameLogic.calculate_score(var)
                         shelf = object.shelf(score)
-                        banked = object.bank()
-                        roundBanked = object.bank()
-                        print(f'You banked {score} points in round {counter}')
-                        print(f'Total score is {banked} points')
-                    elif bank == 'q':
-                        print(f'Total score is {banked} points')
+                        roll -=len(var)
+                        print(f'You have {shelf} unbanked points and {roll} dice remaining')
+                        bank = input('(r)oll again, (b)ank your points or (q)uit ')
+                        if bank == 'b':
+                            # object = Banker()
+                            banked = object.bank()
+                            roundBanked = object.bank()
+                            print(f'You banked {shelf} points in round {counter}')
+                            print(f'Total score is {banked} points')
+                        elif bank == 'q':
+                            print(f'Total score is {banked} points')
+                            print(f'Thanks for playing. You earned {banked} points')
+                            beaking = False
+                            return beaking
+                        elif bank =="r":
+                            if func(counter,banked,shelf,roll) == False:
+                                beaking =False
+                                return beaking
+                            beaking = True
+                            return beaking
+                    elif decide == 'q' and counter > 1:
+                         print(f'Total score is {banked} points')
+                         print(f'Thanks for playing. You earned {banked} points')
+                         beaking = False
+                         return beaking
+                    else:
                         print(f'Thanks for playing. You earned {banked} points')
-                        break
-                elif decide == 'q' and counter > 1:
-                   print(f'Total score is {banked} points')
-                   print(f'Thanks for playing. You earned {banked} points')
-                   break
-                else:
-                    print(f'Thanks for playing. You earned {banked} points')
-                    break
+                        beaking = False
+                        return beaking
+                beaking = func(counter,banked,shelf, roll)
                 counter +=1
 
 
