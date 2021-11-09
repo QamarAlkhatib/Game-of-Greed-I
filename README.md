@@ -36,7 +36,7 @@ https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/7
 https://github.com/QamarAlkhatib/Game-of-Greed-I/pull/8
 
 
-# lab 7 (Game of creed part )
+# lab 7 (Game of creed part 3)
 
 we worked as a team today !
 we shared the screen and all 5 of us started solving the code 
