@@ -94,22 +94,24 @@ class Game():
                             for i in counter_decide:
                                 counter_nums.remove(i)
                         except:
-                            raise cheater()
+                            return cheater()
+                            
 
                         score = GameLogic.calculate_score(var)
                         shelf = object.shelf(score)
                         roll -=len(var)
+                        
                         print(f'You have {shelf} unbanked points and {roll} dice remaining')
                         bank = input('(r)oll again, (b)ank your points or (q)uit ')
                         if bank == 'b':
                             # object = Banker()
                             banked = object.bank()
-                            roundBanked = object.bank()
+                            # roundBanked = object.bank()
                             print(f'You banked {shelf} points in round {counter}')
-                            print(f'Total score is {banked} points')
+                            print(f'Total score is {object.balance} points')
                         elif bank == 'q':
-                            print(f'Total score is {banked} points')
-                            print(f'Thanks for playing. You earned {banked} points')
+                            print(f'Total score is {object.balance} points')
+                            print(f'Thanks for playing. You earned {object.balance} points')
                             beaking = False
                             return beaking
                         elif bank =="r":
@@ -120,12 +122,12 @@ class Game():
                             return beaking
                         return True
                     elif decide == 'q' and counter > 1:
-                         print(f'Total score is {banked} points')
-                         print(f'Thanks for playing. You earned {banked} points')
+                         print(f'Total score is {object.balance} points')
+                         print(f'Thanks for playing. You earned {object.balance} points')
                          beaking = False
                          return beaking
                     else:
-                        print(f'Thanks for playing. You earned {banked} points')
+                        print(f'Thanks for playing. You earned {object.balance} points')
                         beaking = False
                         return beaking
                 beaking = func(counter,banked,shelf, roll)
